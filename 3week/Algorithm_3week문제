@@ -1,1 +1,157 @@
+1. 첫 번째 문제(카운트 업)
+문제 설명 :
+- 정수 start_num와 end_num가 주어질 때, 
+  start_num부터 end_num까지의 숫자를 차례로 담은 리스트를 return하도록 solution 함수를 완성해주세요.
+  
+제한사항 :
+- 0 ≤ start_num ≤ end_num ≤ 50
 
+입출력 예시 :
+- 3부터 10까지의 숫자들을 담은 리스트 [3, 4, 5, 6, 7, 8, 9, 10]를 return합니다.
+
+원본 :
+  def solution(start_num, end_num):
+    answer = []
+    return answer
+
+풀이 :
+  def solution(start_num, end_num):
+      answer = []
+      num = start_num + 1
+      answer.append(start_num)
+      while num < end_num :
+          answer.append(num)
+          num += 1
+      answer.append(end_num)
+      return answer
+
+2. 두 번째 문제(콜라 문제)
+문제 설명 :
+- 빈 병 a개를 가져다주면 콜라 b병을 주는 마트가 있을 때, 빈 병 n개를 가져다주면 몇 병을 받을 수 있는지 계산하는 문제입니다. 
+  보유 중인 빈 병이 a개 미만이면, 추가적으로 빈 병을 받을 순 없습니다.
+
+  콜라를 받기 위해 마트에 주어야 하는 병 수 a, 빈 병 a개를 가져다 주면 마트가 주는 콜라 병 수 b, 상빈이가 가지고 있는 빈 병의 개수 n이 매개변수로 주어집니다.
+  상빈이가 받을 수 있는 콜라의 병 수를 return 하도록 solution 함수를 작성해주세요.
+
+제한사항 :
+- 1 ≤ b < a ≤ n ≤ 1,000,000
+  정답은 항상 int 범위를 넘지 않게 주어집니다.
+
+입출력 예시 :
+1. a = 2, b= 1, c=20, result = 19
+2. a = 3, b= 1, c=20, result = 9
+(입출력 예 #2
+
+빈 병 20개 중 18개를 마트에 가져가서, 6병의 콜라를 받습니다. 이때 상빈이가 가지고 있는 콜라 병의 수는 8(20 – 18 + 6 = 8)개 입니다.
+빈 병 8개 중 6개를 마트에 가져가서, 2병의 콜라를 받습니다. 이때 상빈이가 가지고 있는 콜라 병의 수는 4(8 – 6 + 2 = 4)개 입니다.
+빈 병 4 개중 3개를 마트에 가져가서, 1병의 콜라를 받습니다. 이때 상빈이가 가지고 있는 콜라 병의 수는 2(4 – 3 + 1 = 2)개 입니다.
+3번의 교환 동안 상빈이는 9(6 + 2 + 1 = 9)병의 콜라를 받았습니다.)
+
+원본 : 
+  def solution(a, b, n):
+    answer = 0
+    return answer
+
+풀이 : 
+  def solution(a, b, n):
+      answer = 0
+      while n >= a :
+          n -= (a-b)
+          answer += b
+      return answer
+
+3. 세 번째 문제(직사각형 별찍기)
+문제 설명 :
+- 이 문제에는 표준 입력으로 두 개의 정수 n과 m이 주어집니다.
+  별(*) 문자를 이용해 가로의 길이가 n, 세로의 길이가 m인 직사각형 형태를 출력해보세요.
+
+제한 조건 :
+- n과 m은 각각 1000 이하인 자연수입니다.
+
+입출력 예시 :
+- 입력 : 5 3
+  출력 : *****
+         *****
+         *****
+원본 :
+ a, b = map(int, input().strip().split(' '))
+print(a + b)
+
+풀이 :
+  a, b = map(int, input().strip().split(' '))
+  for _ in range(b) :
+      for i in range(a) :
+          print('*', end='')
+      print('\n', end ='')
+  
+  print()
+
+4. 네 번째 문제(수박수박수박수박수박수?)
+문제 설명 :
+- 길이가 n이고, "수박수박수박수...."와 같은 패턴을 유지하는 문자열을 리턴하는 함수, solution을 완성하세요. 
+  예를들어 n이 4이면 "수박수박"을 리턴하고 3이라면 "수박수"를 리턴하면 됩니다.
+
+제한 조건 :
+- n은 길이 10,000이하인 자연수입니다.
+
+입출력 예시 :
+- n	return
+  3	"수박수"
+  4	"수박수박"
+
+원본 : 
+  def solution(n):
+    answer = ''
+    return answer
+
+풀이 :
+  def solution(n):
+      answer = ''
+      if n % 2 :
+          for i in range(n//2) :
+              answer += '수박'
+          answer += "수"
+      else :
+          for i in range(n//2) :
+              answer += '수박'
+      return answer
+
+5. 다섯 번째 문제(부족한 금액 계산하기)
+문제 설명 :
+- 새로 생긴 놀이기구는 인기가 매우 많아 줄이 끊이질 않습니다. 이 놀이기구의 원래 이용료는 price원 인데, 
+  놀이기구를 N 번 째 이용한다면 원래 이용료의 N배를 받기로 하였습니다. 즉, 처음 이용료가 100이었다면 2번째에는 200, 3번째에는 300으로 요금이 인상됩니다.
+  놀이기구를 count번 타게 되면 현재 자신이 가지고 있는 금액에서 얼마가 모자라는지를 return 하도록 solution 함수를 완성하세요.
+  단, 금액이 부족하지 않으면 0을 return 하세요.
+
+제한사항 :
+- 놀이기구의 이용료 price : 1 ≤ price ≤ 2,500, price는 자연수
+  처음 가지고 있던 금액 money : 1 ≤ money ≤ 1,000,000,000, money는 자연수
+  놀이기구의 이용 횟수 count : 1 ≤ count ≤ 2,500, count는 자연수
+
+입출력 예시 :
+- price	money	count	result
+  3	    20	  4	    10
+  이용금액이 3인 놀이기구를 4번 타고 싶은 고객이 현재 가진 금액이 20이라면, 총 필요한 놀이기구의
+  이용 금액은 30 (= 3+6+9+12) 이 되어 10만큼 부족하므로 10을 return 합니다.
+
+원본 :
+  def solution(price, money, count):
+    answer = -1
+
+    return answer
+
+풀이 :
+  def solution(price, money, count):
+      answer = -1
+      for i in range(count) :
+          money -= price*(i+1)
+      
+      if money < 0 :
+          answer = -1 * money
+      elif money >=0 :
+          answer = 0
+      return answer
+
+
+6. 같이 풀어볼 문제(약수의 개수와 덧셈)
+https://school.programmers.co.kr/learn/courses/30/lessons/77884
