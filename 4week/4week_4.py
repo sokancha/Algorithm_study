@@ -41,19 +41,19 @@ def solution(s):
         k.append(s[a])
     k.reverse()
 
-    n = len(j) + 1
+    n = len(j) + 1 #n은 k배열에서 시작할 순서
 
     for i in j[1:]:
-        sum = 1
-        n -= 1
-        for t in k[n - 1:]:
-            c = len(k[n - 1:])
-            if i != t and sum != c:
+        sum = 1 #sum은 안쪽 for문을 돌리는 횟수,
+        n -= 1 #n은 for문을 돌릴때마다 1씩 빼줌, 이유는 j배열이 하나씩 넘어갈때 k배열도 하나씩 늘려야함.
+        for t in k[n -1:]:
+            c = len(k[n -1 :]) #c는 안쪽 for문이 돌리다 t값이 i값이랑 같아지는 경우에 멈추고 -1을 반환하기 위해 넣어둔 변수
+            if i != t and sum != c: #i와 t가 다르고, sum이 c와 다를때 즉, sum+=1 한번돌렸다는걸 알려줌
                 sum += 1
-            elif i != t and sum == c:
+            elif i != t and sum == c: #i와 t가 다르고, sum이랑 c가 같다 즉, i의 값과 k배열을 계속 돌려서 i값 전까지왔는데 같은게 없다? -1 변환한다.
                 answer.append(-1)
                 break
-            elif i == t:
+            elif i == t: #i와 t가 같으면 돌린횟수(즉, i의 뒤에서 몇번째에 값이있는지)를 answer에 넣음.
                 answer.append(sum)
                 break
 
